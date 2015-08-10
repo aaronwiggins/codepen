@@ -39,9 +39,34 @@ def letter_changes(str)
 end
 
 def simple_adding(num)
+
   range = (1..num)
-  p range.reduce(:+)
   return range.reduce(:+)
+
+end
+
+def letter_capitalize(str)
+
+  str = str.split.map(&:capitalize).join(' ')
+  return str
+
+end
+
+# def SimpleSymbols(str)
+#
+#   # code goes here
+#   return str
+#
+# end
+def check_nums(num1, num2)
+
+  if num1 < num2
+    true
+  elsif num1 > num2
+    false
+  else
+    return -1
+  end
 
 end
 
@@ -57,4 +82,19 @@ class CodepenChallenge < MiniTest::Test
     assert_equal 9870, simple_adding(140)
   end
 
+  def test_letter_capitalize
+    assert_equal "Hello World", letter_capitalize("hello world")
+    assert_equal "I Ran Here", letter_capitalize("i ran here")
+  end
+
+  # def test_simple_symbols
+  #   assert true, simple_symbols("+d+=3=+s+")
+  #   assert false, simple_symbols("f++d+")
+  # end
+
+  def test_check_nums
+    assert_equal -1, check_nums(8, 8)
+    assert_equal true, check_nums(3, 122)
+    assert_equal false, check_nums(3, 1)
+  end
 end
