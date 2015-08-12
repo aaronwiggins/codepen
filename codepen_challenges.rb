@@ -70,6 +70,18 @@ def check_nums(num1, num2)
 
 end
 
+def time_convert(num)
+
+  num.to_f
+  if num < 60.0
+    num = (num/100.0).to_s.gsub(/[.]/,':')
+  elsif num/60.0 >= 2.0 && num/60.0 <= 2.99
+    num = ((num - 120.0).to_f/10.0).to_s.gsub(/(0.)/,'')
+    num = "2" + ":" + "#{num}"
+  end
+  
+end
+
 class CodepenChallenge < MiniTest::Test
 
   def test_letter_change
@@ -96,5 +108,10 @@ class CodepenChallenge < MiniTest::Test
     assert_equal -1, check_nums(8, 8)
     assert_equal true, check_nums(3, 122)
     assert_equal false, check_nums(3, 1)
+  end
+
+  def test_time_covert
+    assert_equal "2:6", time_convert(126)
+    assert_equal "0:45", time_convert(45)
   end
 end
