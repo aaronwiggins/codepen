@@ -62,6 +62,12 @@ def time_convert(num)
 
 end
 
+def alphabet_soup(str)
+
+  str.downcase.chars.sort.join
+
+end
+
 class CodepenChallenge < MiniTest::Test
 
   def test_letter_change
@@ -94,4 +100,10 @@ class CodepenChallenge < MiniTest::Test
     assert_equal "2:6", time_convert(126)
     assert_equal "0:45", time_convert(45)
   end
+
+  def test_alphabet_soup
+    assert_equal "bcdeeorty", alphabet_soup("coderbyte")
+    assert_equal "ahhloop", alphabet_soup("hooplah")
+  end
+
 end
