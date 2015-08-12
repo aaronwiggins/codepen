@@ -72,14 +72,10 @@ end
 
 def time_convert(num)
 
-  num.to_f
-  if num < 60.0
-    num = (num/100.0).to_s.gsub(/[.]/,':')
-  elsif num/60.0 >= 2.0 && num/60.0 <= 2.99
-    num = ((num - 120.0).to_f/10.0).to_s.gsub(/(0.)/,'')
-    num = "2" + ":" + "#{num}"
-  end
-  
+  minutes = num % 60
+  hours = num / 60
+  time = "#{hours}:#{minutes}"
+
 end
 
 class CodepenChallenge < MiniTest::Test
