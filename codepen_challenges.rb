@@ -17,24 +17,8 @@ end
 
 def letter_changes(str)
 
-  vowel = ["a", "e", "i", "o", "u"]
-  alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p",
-      "q","r","s","t","u","v","w","x","y","z"]
-  new_string = ""
-  str.each_char do |letter|
-    index = alphabet.index(letter)
-    if index == nil
-      new_string << letter
-      next
-    end
-    letter = alphabet.at(index+1)
-    if vowel.include?(letter)
-      new_string << letter.capitalize
-    else
-      new_string << letter
-    end
-  end
-  return new_string
+  str.gsub(/[a-zA-Z]/){ |letter| letter.next }
+      .gsub(/[aeiou]/) { |letter| letter.capitalize }
 
 end
 
