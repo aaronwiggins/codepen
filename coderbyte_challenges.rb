@@ -68,6 +68,24 @@ def alphabet_soup(str)
 
 end
 
+def ab_check(str)
+  boolean = []
+  str.each_char.with_index do |letter, index|
+    if index+1 > str.length-3
+      break
+    elsif "#{letter}" == "a" && str[index+4] == "b"
+      boolean << true
+      break
+    elsif "#{letter}" == "b" && str[index+4] == "a"
+      boolean << true
+      break
+    else
+      boolean << false
+    end
+  end
+  boolean.include?(true) ? true : false
+end
+
 class CodepenChallenge < MiniTest::Test
 
   def test_letter_change
@@ -106,4 +124,9 @@ class CodepenChallenge < MiniTest::Test
     assert_equal "ahhloop", alphabet_soup("hooplah")
   end
 
+  def test_ab_check
+    assert_equal false, ab_check("after badly")
+    assert_equal true, ab_check("Laura sobs")
+    assert_equal true, ab_check("lane borrowed")
+  end
 end
