@@ -100,6 +100,12 @@ def vowel_count(str)
 
 end
 
+def word_count(str)
+
+  str.split.count
+
+end
+
 class CodepenChallenge < MiniTest::Test
 
   def test_letter_change
@@ -147,5 +153,10 @@ class CodepenChallenge < MiniTest::Test
   def test_vowel_count
     assert_equal 2, vowel_count("hello")
     assert_equal 3, vowel_count("coderbyte")
+  end
+
+  def test_word_count
+    assert_equal 2, word_count("Hello World")
+    assert_equal 3, word_count("one 22 three")
   end
 end
