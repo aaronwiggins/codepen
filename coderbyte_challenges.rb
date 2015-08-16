@@ -17,7 +17,7 @@ end
 
 def letter_changes(str)
 
-  str.gsub(/[a-zA-Z]/){ |letter| letter.next }
+  str.gsub(/[a-zA-Z]/) { |letter| letter.next }
       .gsub(/[aeiou]/) { |letter| letter.capitalize }
 
 end
@@ -42,6 +42,7 @@ end
 #   return str
 #
 # end
+
 def check_nums(num1, num2)
 
   if num1 < num2
@@ -86,6 +87,19 @@ def ab_check(str)
   boolean.include?(true) ? true : false
 end
 
+def vowel_count(str)
+  str = str.downcase
+  counter = 0
+  vowels = ["a", "e", "i", "o", "u"]
+  str.each_char do |letter|
+    if vowels.include?(letter)
+      counter += 1
+    end
+  end
+  counter
+
+end
+
 class CodepenChallenge < MiniTest::Test
 
   def test_letter_change
@@ -128,5 +142,10 @@ class CodepenChallenge < MiniTest::Test
     assert_equal false, ab_check("after badly")
     assert_equal true, ab_check("Laura sobs")
     assert_equal true, ab_check("lane borrowed")
+  end
+
+  def test_vowel_count
+    assert_equal 2, vowel_count("hello")
+    assert_equal 3, vowel_count("coderbyte")
   end
 end
